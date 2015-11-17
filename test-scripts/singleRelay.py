@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO, time
 
-pin = 12
+pin = 11
 
 GPIO.setmode(GPIO.BOARD)
 print("Getting Started")
