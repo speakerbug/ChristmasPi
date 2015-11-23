@@ -19,7 +19,7 @@ try:
     
     # Setup the board
     GPIO.setmode(GPIO.BOARD)
-    for i in range(1,9):
+    for i in range(1,13):
         GPIO.setup(pin_map[i], GPIO.OUT)
     time.sleep(2.0)
     
@@ -43,7 +43,6 @@ try:
 
         # time to run the command
         if int(next_step[0]) <= cur_time:
-
             print next_step
             # if the command is Relay 1-12 
             if next_step[1] >= "1" and next_step[1] <= "12":
