@@ -37,7 +37,7 @@ with open(config,'r') as f:
 
 # Start show
 start_time = int(round(time.time()*1000))
-step = 1 #ignore the header line 
+step = 1 # ignore the header line 
 while True :
     next_step = seq_data[step].split(",");
     next_step[1] = next_step[1].rstrip()
@@ -60,7 +60,7 @@ while True :
             GPIO.output(pin_map[i],False)
         #Reached end - End loop
         break
-    #Increment what step we are on
+    # Increment what step we are on
     step += 1
 
 GPIO.cleanup()
