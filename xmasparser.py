@@ -23,7 +23,7 @@ except IndexError:
 GPIO.setmode(GPIO.BOARD)
 for i in range(1,12):
     GPIO.setup(pin_map[i], GPIO.OUT)
-time.sleep(2.0)
+time.sleep(1.0)
 
 pygame.mixer.init()
 pygame.mixer.music.load(mp3)
@@ -43,11 +43,14 @@ while True :
     next_step[1] = next_step[1].rstrip()
     cur_time = int(round(time.time()*1000)) - start_time
 
+    print(cur_time)
+    print(next_step[0])
     # time to run the command
     if int(next_step[0]) <= cur_time:
         print next_step
         # if the command is Relay 1-12 
         if next_step[1] >= "1" and next_step[1] <= "12":
+            step += 1
             # change the pin state
             if next_step[2] == "1":
                 GPIO.output(pin_map[int(next_step[1])],True)
@@ -58,9 +61,8 @@ while True :
     if next_step[1].rstrip() == "END":
         for i in range(1,12):
             GPIO.output(pin_map[i],False)
-        #Reached end - End loop
+        # Reached end - End loop
         break
     # Increment what step we are on
-    step += 1
 
 GPIO.cleanup()
