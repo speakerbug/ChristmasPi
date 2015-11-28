@@ -26,7 +26,7 @@ except IndexError:
 GPIO.setmode(GPIO.BOARD)
 for i in range(0,16):
     GPIO.setup(pin_map[i], GPIO.OUT)
-time.sleep(1.0)
+    GPIO.output(pin_map[i],False)           
 
 pygame.mixer.init()
 pygame.mixer.music.load(mp3)
@@ -62,6 +62,8 @@ while True :
 
     # This is used to check for END
     if next_step[1].rstrip() == "END":
+        for i in range(0,16):
+            GPIO.output(pin_map[i],False)
         # Reached end - End loop
         break
 
