@@ -24,7 +24,7 @@ except IndexError:
     
 # Setup the board
 GPIO.setmode(GPIO.BOARD)
-for i in range(0,15):
+for i in range(0,16):
     GPIO.setup(pin_map[i], GPIO.OUT)
 time.sleep(1.0)
 
@@ -52,11 +52,11 @@ while True :
         if next_step[2] == "1":
             if debug:
                 print("Turning on " + next_step[1])
-            GPIO.output(pin_map[int(next_step[1])],True)
+            GPIO.output(pin_map[int(next_step[1])-1],True)
         else:
             if debug:
                 print("Turning off " + next_step[1])
-            GPIO.output(pin_map[int(next_step[1])],False)
+            GPIO.output(pin_map[int(next_step[1])-1],False)
         # Increment what step we are on
         step += 1
 
