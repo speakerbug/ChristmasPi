@@ -1,16 +1,21 @@
 import RPi.GPIO as GPIO, time
+import sys
+import time
 
-pin = 11
+pin_map = [11,12,13,15,16,18,22,7,29,31,32,33,35,36,37,38]
 
-GPIO.setmode(GPIO.BOARD)
+pin = int(sys.argv[1]) - 1
+
 print("Getting Started")
-time.sleep(3.0)
+GPIO.setmode(GPIO.BOARD)
+for i in range(0,16):
+    GPIO.setup(pin_map[i], GPIO.OUT)
 
-print("Turning on 1")
-GPIO.setup(pin, GPIO.OUT)
-GPIO.output(pin, True)
+print("Turning on")
+GPIO.output(pin_map[pin], True)
 time.sleep(2.0)
-print("Turning off 1")
-GPIO.output(pin, False)
+print("Turning off")
+GPIO.output(pin_map[pin], False)
 
 GPIO.cleanup()
+
