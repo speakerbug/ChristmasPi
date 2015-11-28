@@ -1,4 +1,7 @@
-# xmasparser.py
+# File: xmasparser.py
+# Henry Saniuk, Jr.
+# This script takes in a config file and MP3 file and turns 
+# on and off channels of a relay accordingly.
 #
 # Command Line usage:
 #   python xmasparser.py <config file> <mp3 file>
@@ -8,7 +11,7 @@ import sys
 import time
 import pygame
 
-# Defines the mapping of the GPIO pins on the Pi in order of channel
+# Defines the mapping of the GPIO pins on the pi in order of channel
 pin_map = [11,12,13,15,16,18,22,7,29,31,32,33,35,36,37,38]
 
 # Defines if program should be in debug mode and 
@@ -67,6 +70,8 @@ while True :
     if next_step[1].rstrip() == "END":
         for i in range(0,16):
             GPIO.output(pin_map[i],False)
+        if debug:
+            print("Reached END")
         # Reached end - End loop
         break
 

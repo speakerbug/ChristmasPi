@@ -1,5 +1,7 @@
-# debugparser.py
-# This script is used for debugging without a raspberry pi
+# File: debugparser.py
+# Henry Saniuk, Jr.
+# This script is used for debugging without a Raspberry Pi
+# but should act like xmasparser.py
 #
 # Command Line usage:
 #   python debugparser.py <config file> <mp3 file>
@@ -49,5 +51,7 @@ while True :
 
     # This is used to check for END
     if next_step[1].rstrip() == "END":
+        if debug:
+            print("Reached END")
         # Reached end - End loop
         break
