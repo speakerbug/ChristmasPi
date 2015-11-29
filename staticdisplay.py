@@ -3,7 +3,7 @@
 # This script takes in a config file for a static display
 #
 # Command Line usage:
-#   python staticdisplay.py <config file>
+#   python staticdisplay.py <config file> <num of seconds>"
 
 import RPi.GPIO as GPIO, time
 import sys
@@ -19,10 +19,11 @@ debug = True
 
 try:
     config = str(sys.argv[1])
+    num_of_seconds = int(sys.argv[2])
     if debug:
         print 'config file =', config
 except IndexError:
-    print 'Usage: python staticdisplay.py <config file>'
+    print 'Usage: python staticdisplay.py <config file> <num of seconds>'
     
 # Setup the board
 GPIO.setmode(GPIO.BOARD)
@@ -39,22 +40,22 @@ with open(config,'r') as f:
 # Start static display
 i = 1 # ignore the header line 
 while True :
-    next_channel = seq_data[i].split(",")
-        if debug:
-            print("Turning on " + str(next_channel[0]))
-        GPIO.output(pin_map[int(next_channel[0])-1],True)
-        i += 1
+    next_channel = seq_data[i]
+    if debug:
+    	print("Turning on " + str(next_channel))
+    GPIO.output(pin_map[int(next_channel)-1],True)
+    i += 1
 
     # This is used to check for END
-    if next_step[0].rstrip() == "END":
+    if seq_data[i].rstrip() == "END":
         if debug:
             print("Reached END of static display.")
         # Reached end - End loop
         break
 
-input("Press Enter to end static display...")
-
+print("Will end static display in " + str(num_of_seconds) + " seconds")
+time.sleep(num_of_seconds)
 for i in range(0,16):
-            GPIO.output(pin_map[i],False)
-
+        GPIO.output(pin_map[i],False)
 GPIO.cleanup()
+print("Ending static display")
