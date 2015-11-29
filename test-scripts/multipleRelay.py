@@ -20,8 +20,10 @@ for i in range(0,16):
     GPIO.setup(pin_map[i], GPIO.OUT)
 
 for x in range(0,len(pins)):
-    GPIO.output(pin_map[int(pins)-1],True)
-    
+    print("Turning on channel " + pins[x])
+    GPIO.output(pin_map[int(pins[x])-1],True)
+
+print("Will turn off after " + str(num_seconds) + " seconds")
 time.sleep(num_seconds)
 
 for i in range(0,16):
