@@ -18,10 +18,10 @@ try:
     config = str(sys.argv[1])
     mp3 = str(sys.argv[2])
     if debug:
-        print 'config file =', config
-        print 'mp3 file =', mp3
+        print('config file =', config)
+        print('mp3 file =', mp3)
 except IndexError:
-    print 'Usage: python debugparser.py <config file> <mp3 file>'
+    print('Usage: python debugparser.py <config file> <mp3 file>')
 
 # Open the input sequnce file and read/parse it
 with open(config,'r') as f:
