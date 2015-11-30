@@ -36,7 +36,7 @@ for i in range(0,16):
 # Load and play MP3 file
 pygame.mixer.init()
 pygame.mixer.music.load(mp3)
-pygame.mixer.music.set_volume(.75)
+pygame.mixer.music.set_volume(.95)
 pygame.mixer.music.play()
 
 # Open the input sequnce file and read/parse it
