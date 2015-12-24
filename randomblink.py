@@ -40,7 +40,7 @@ with open(config,'r') as f:
 
 # Start random blink display        
 for i in range(0,num_of_blinks):
-    next_channel = randint(0,len(seq_data))
+    next_channel = randint(0,len(seq_data)-1)
     if debug:
     	print("Turning on " + str(seq_data[int(next_channel)]))
     GPIO.output(pin_map[int(seq_data[int(next_channel)])-1],True)
