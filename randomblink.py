@@ -44,7 +44,7 @@ for i in range(0,num_of_blinks):
     if debug:
     	print("Turning on " + str(seq_data[int(next_channel)]))
     GPIO.output(pin_map[int(seq_data[int(next_channel)])-1],True)
-    time.sleep(randint(1,3))
+    time.sleep(randint(1,3) / randint(1,1000))
     if debug:
     	print("Turning off " + str(seq_data[int(next_channel)]))
     GPIO.output(pin_map[int(seq_data[int(next_channel)])-1],False)
